@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .redButton{
+            width: 50px;
+            height: 50px;
+            background: red;
+            text-align: center;
+            line-height: 50px;
+            cursor:pointer
+        }
+    </style>
+</head>
+<body>
+<div class="button">
+    <div class="redButton">
+        按钮
+    </div>
+</div>
+<ul>
+    <li src="">
+
+    </li>
+</ul>
+
+
+<script src="jquery-3.0.0.min.js"></script>
+<script>
+    $(document).on("click",".redButton",function(){
+        alert('点击了按钮');
+    });
+    var data=new Date()
+   var data1=data.getHours()
+    console.log(data1)
+
+</script>
+
+</body>
+</html>

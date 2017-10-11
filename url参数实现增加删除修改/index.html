@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../jquery-3.0.0.min.js"></script>
+<script src="urlCode.js"></script>
+<script>
+    /*
+        //获取到url参数对象
+        var urlObj=window.location.search.getQueryString();
+        console.log(urlObj);
+    //    把对象转成jquery字符串
+       var urlStr=window.location.search.toQuery(urlObj);
+        console.log(urlStr);
+    //   在现有的jquery字符串中添加新的参数
+        var addUrlStr=urlStr.addQueryString({b:2,c:3});
+        console.log(addUrlStr);
+    //    在现有的jquery字符串中删除制定的key
+        var delUrlStr=addUrlStr.removeQueryString(['b']);
+        console.log(delUrlStr);*/
+
+ /*
+
+  var url = window.location.href
+    var urlStr = url.split('?')
+    var id=urlStr[1].split('=')
+    console.log(id[1])
+
+    */
+
+ var url=window.location.href.split('?');
+    console.log(url[1])
+
+
+
+
+</script>
+</body>
+</html>

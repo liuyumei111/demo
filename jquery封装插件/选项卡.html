@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta charset="utf-8"/>
+    <style>
+        .tabs {
+            display: flex;
+            width: 200px;
+        }
+
+        .tabs > div {
+            flex: 1;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border: 1px solid red;
+        }
+
+        .tabcon {
+            width: 200px;
+            height: 50px;
+            border: 1px solid blue;
+        }
+
+        .tabcon > div {
+            display: none;
+        }
+
+        .active {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="tabs">
+    <div class="tabs">
+        <div>选项一</div>
+        <div>选项二</div>
+        <div>选项三</div>
+        <div>选项四</div>
+    </div>
+    <div class="tabcon">
+        <div>选项一内容</div>
+        <div>选项二内容</div>
+        <div>选项三内容</div>
+        <div>选项四内容</div>
+    </div>
+</div>
+
+<script src="jquery-2.1.1.min.js"></script>
+
+<script>
+    //$.fn在jquery原型中添加一个叫tab的方法
+    $.fn.newTabs = function (options) {
+        var id = $(this); //这里的this就是当前调用此方法的对象  $("#tabs")
+        var items = id.find(".tabcon div").eq(options.index).show().end();
+        id.find(".tabs div").eq(options.index).addClass(options.activeClass).end().on('tap', function () {
+            var _this = $(this);
+            console.log(_this);
+            _this.addClass(options.activeClass).siblings().removeClass(options.activeClass);
+            var index = _this.index();
+            items.hide().eq(index).show();
+        })
+    };
+    $("#tabs").newTabs({
+        activeClass: "active",
+        index: 0
+    });
+
+</script>
+</body>
+</html>

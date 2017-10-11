@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>取出localstorage</title>
+</head>
+<body>
+<div>
+    <span>控制台查看localstorage取值</span>
+</div>
+<p></p>
+<script src="../jquery-3.0.0.min.js"></script>
+<script>
+    //获取到localStorage这个对象-->
+    var storage=window.localStorage;
+    console.log(storage);
+
+  /* //提取localstorage的第一种方法
+    var lenOne=storage.number1;
+    var lenTwo=storage.number2;
+    var lenThree=storage.number3;*/
+
+  /*  //提取localstorage的第二种方法
+    var lenOne=storage['number1'];
+    var lenTwo=storage['number2'];
+    var lenThree=storage['number3'];
+*/
+
+      //提取localstorage的第三种方法
+    var lenOne=storage.getItem('number1');
+    var lenTwo=storage.getItem('number2');
+    var lenThree=storage.getItem('number3');
+
+
+    console.log(lenOne);
+    console.log(lenTwo);
+    console.log(lenThree);
+
+    storage.setItem('number1','55555')
+
+    console.log(lenOne);
+
+</script>
+</body>
+</html>

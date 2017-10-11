@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包保存正确状态</title>
+</head>
+<body>
+<ul>
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+    <li>d</li>
+    <li>e</li>
+</ul>
+<script src="../jquery-3.0.0.min.js"></script>
+<script>
+    <!--闭包保存正确状态-->
+    var lis = document.getElementsByTagName('li')
+    console.log(lis.length)
+    for (var i = 0; i < lis.length; i++) {
+        (function (index) {
+            lis[i].addEventListener('click', function () {
+                index=index+1
+                alert('点击的是第' + index + '个li')
+            })
+        }(i))
+    }
+
+/*//    只能输出5个li
+    var lis = document.getElementsByTagName('li')
+    console.log(lis);
+    for(var i = 0; i < lis.length; i++) {
+        lis[i].addEventListener('click', function () {
+            alert('点击的是第' + i + '个li')
+        },'false')
+    }
+
+    */
+
+//用jquery可以达到i值保持正确
+$('li').each(function (index, item) {
+    $(item).click(function () {
+        alert('点击的是第' + index + '个li')
+    })
+})
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<div>
+    <input type="button" value="测试事件冒泡" />
+</div>
+//依次弹出”red“,"green","yellow"。
+
+<body>
+<script>
+    var $input = document.getElementsByTagName("input")[0];
+    var $div = document.getElementsByTagName("div")[0];
+    var $body = document.getElementsByTagName("body")[0];
+
+    $input.addEventListener("click", function(){
+        this.style.border = "5px solid red";
+        alert("red")
+    }, true)
+    $div.addEventListener("click", function(){
+        this.style.border = "5px solid green";
+        alert("green")
+    }, true)
+    $body.addEventListener("click", function(){
+        this.style.border = "5px solid yellow";
+        alert("yellow")
+    }, true)
+</script>
+</body>
+</html>

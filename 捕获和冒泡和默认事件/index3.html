@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+    <li>555</li>
+    <li>666</li>
+    <li>777</li>
+</ul>
+<script>
+    window.onload = function(){
+        var oUl = document.getElementById("list");
+        oUl.onclick = function(e){
+            var e = e || window.event;
+            var target = e.target || e.srcElement;
+            if(target.nodeName.toLowerCase() == 'li'){
+                alert('点击了li');
+                alert(target.innerHTML);
+            }
+        }
+    }
+</script>
+</body>
+</html>

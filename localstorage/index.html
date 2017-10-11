@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>存入localstorage</title>
+</head>
+<body>
+<div>
+    <a href="index2.html">点击进入index2页面</a>
+</div>
+<script src="../jquery-3.0.0.min.js"></script>
+<script>
+    //获取到localStorage这个对象-->
+  var storage=window.localStorage;
+
+ /*   //  添加localstorage第一种方法
+  storage.number1='我是localstorage的第一.1条数据';
+  storage.number2='我是localstorage的第二.2条数据';
+  storage.number3='我是localstorage的第三.3条数据';*/
+
+  /*  //  添加localstorage第二种方法
+    storage['number1']='我是localstorage的第一.4条数据';
+    storage['number2']='我是localstorage的第二.5条数据';
+    storage['number3']='我是localstorage的第三.6条数据';*/
+
+      //  添加localstorage第三种方法
+    storage.setItem('number1','我是localstorage的第一.7条数据');
+    storage.setItem('number2','我是localstorage的第二.8条数据');
+    storage.setItem('number3','我是localstorage的第三.9条数据');
+
+
+//    输出这个对象的所有内容
+    console.log(storage)
+
+</script>
+</body>
+</html>

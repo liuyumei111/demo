@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>捕获和冒泡和默认事件的区分</title>
+    <style>
+        .box1{
+            width: 300px;
+            height: 300px;
+            border: 2px solid red;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+<!--
+1.默认事件
+下面是一个a标签,默认具有跳转属性,怎么做到点击a标签让其不跳
+<a href="https://www.baidu.com/">点击我进入百度</a>
+<script src="../jquery-3.0.0.min.js"></script>
+<script>
+    $('a').on('click',function (event) {
+        event.preventDefault()
+    })
+</script>
+-->
+
+
+<!--1.冒泡-->
+<div class="box1">我是box1
+    <div class="box2">我是box2
+        <div class="box3">我是box3</div>
+    </div>
+</div>
+<script src="../jquery-3.0.0.min.js"></script>
+<script>
+    $('.box1').on('click',function () {
+        console.log('我是box1');
+        event.stopPropagation();
+    });
+    $('.box2').on('click',function () {
+        console.log('我是box2');
+        event.stopPropagation();
+    });
+    $('.box3').on('click',function (event) {
+        console.log('我是box3');
+//        阻止冒泡事件
+        event.stopPropagation();
+    });
+</script>
+
+</body>
+</html>

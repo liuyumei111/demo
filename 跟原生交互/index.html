@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>h5和原生简单交互</title>
+</head>
+<body>
+<script>
+    /*案例描述：页面是h5出的，分享功能是原生那边出的，h5点击了分享之后拉取原生的方法*/
+
+    // 分享share-friends按钮
+    $('.share-friends').unbind().bind('click', function (event) {
+        shareFrendsTwo(event, '2');
+    });
+
+    /**iOS或是安卓的不同操作**/
+    function shareFrendsTwo(event, type) {
+//        阻止冒泡事件
+        event.stopPropagation();
+//        给安卓或是ios传过去的数据,如果这里的数据是要通过ajax请求过来的就正常发送请求,在请求成功后判断进行下面的操作
+        var data='';
+        var ua = navigator.userAgent.toLowerCase();  //浏览器类型
+        if (/iphone|ipad|ipod/.test(ua)) {
+            alert('这是ios机型');
+            //店铺分享拉取iOS分享
+            iosShareTwo(data);
+        } else {
+            alert('这是android机型');
+            //店铺分享拉取安卓分享   注意：安卓的数据类型比较特殊要字符串的
+            androidShareTwo(JSON.stringify(data));
+        }
+    }
+
+    //店铺分享拉取安卓分享
+    function androidShareTwo(param) {
+        window.huifa.shopShare(param);     //shopShare这个方法是和原生共同协调好一起定义的
+    }
+
+    //店铺分享拉取iOS分享
+    function iosShareTwo(param) {
+        window.webkit.messageHandlers.shopShare.postMessage(param);     //shopShare这个方法是和原生共同协调好一起定义的
+    }
+
+</script>
+</body>
+</html>

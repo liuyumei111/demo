@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>取消收藏/收藏</title>
+    <style>
+        .shouCang{
+            width: 72px;
+            height: 96px;
+            text-align: center;
+        }
+        .shouCang-img{
+            width: 100%;
+            height: 60px;
+            background: url("../img/xin.png")no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+<script type="text/x-handlebars-template" id="body">
+    <!--{{#valueCompare data'===''001' }}-->
+<div class="shouCang">
+    <div class="shouCang-img"></div>
+    <span>{{data}}</span>
+</div>
+    <!--{{/valueCompare}}-->
+
+    <!--{{#valueCompare data'===''002'}}-->
+    <!--<div class="shouCang">-->
+        <!--<div class="shouCang-img"></div>-->
+        <!--<span>收藏</span>-->
+    <!--</div>-->
+    <!--{{/valueCompare}}-->
+</script>
+</div>
+
+<script src="../jquery-3.0.0.min.js"></script>
+<script src="../handlebars-v4.0.10.js"></script>
+<script>
+
+//    //判断value的状态，渲染不同的数据
+//    Handlebars.registerHelper('valueCompare', function(left, operator, right, options) {
+//        if (arguments.length < 3) {
+//            throw new Error('Handlerbars Helper "compare" needs 2 parameters');
+//        }
+//        var operators = {
+//            '==':     function(l, r) {return l == r; },
+//            '===':    function(l, r) {return l === r; },
+//            '!=':     function(l, r) {return l != r; },
+//            '!==':    function(l, r) {return l !== r; },
+//            '<':      function(l, r) {return l < r; },
+//            '>':      function(l, r) {return l > r; },
+//            '<=':     function(l, r) {return l <= r; },
+//            '>=':     function(l, r) {return l >= r; },
+//            'typeof': function(l, r) {return typeof l == r;
+//            }
+//        };
+//
+//        if (!operators[operator]) {
+//            throw new Error('Handlerbars Helper "compare" doesn\'t know the operator ' + operator);
+//        }
+//
+//        var result = operators[operator](left, right);
+//
+//        if (result) {
+//            return options.fn(this);
+//        } else {
+//            return options.inverse(this);
+//        }
+//    });
+
+
+
+    var bodyTpl=$('#body').html();
+    var bodyCmp=Handlebars.compile(bodyTpl);
+
+    $.ajax({
+        url:'data.json',
+        type:'get',
+        dataType:'json',
+        success:function (data) {
+            if(data.errorCode=='200'){
+                console.log(data);
+                $('.box').html(bodyCmp(data))
+            }
+        },
+        error:function () {
+           alert('服务器异常')
+        }
+
+    });
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

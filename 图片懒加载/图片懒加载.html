@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
+  <title>图片懒加载</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        img{
+           width: 265px;
+            height: 274px;
+        }
+    </style>
+</head>
+<body>
+        <img class="lazy" src="../img/jiazai.png" data-original="../img/img1.jpg">
+        <br/>
+        <img class="lazy" src="../img/jiazai.png" data-original="../img/img2.jpg">
+        <br/>
+        <img class="lazy" src="../img/jiazai.png" data-original="../img/img3.jpg">
+        <br/>
+        <img class="lazy" src="../img/jiazai.png" data-original="../img/img1.jpg">
+        <br/>
+        <img class="lazy" src="../img/jiazai.png" data-original="../img/img2.jpg">
+        <br/>
+        <img class="lazy" src="../img/jiazai.png" data-original="../img/img3.jpg">
+        <br/>
+  <script src="http://webmap2.map.bdimg.com/yyfm/jQuery_1.x/1.10.2/js/jQuery_1.x.min.js"></script>
+  <script src="lazyload.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8">
+  $(function() {
+    $("img.lazy").lazyload()
+  });
+  </script>
+</body>
+</html>
